@@ -38,4 +38,4 @@ class Product(models.Model):
 
     @property
     def output_value(self):
-        return self.input_value + (self.input_value * 0.4)
+        return self.input_value + self.input_value * 0.4

@@ -5,7 +5,7 @@ from product.models import Category, Product, Provider
 
 @admin.register(Provider)
 class ProviderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'cnpj',)
+    list_display = ('is_active', 'id', 'name', 'cnpj',)
     list_display_links = ('name', 'cnpj',)
     list_filter = ('name', 'cnpj',)
     list_editable = ('is_active',)
@@ -17,7 +17,7 @@ class ProviderAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('category',)
+    list_display = ('is_active', 'category',)
     list_display_links = ('category',)
     list_filter = ('category',)
     list_editable = ('is_active',)
@@ -29,7 +29,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'category',)
+    list_display = ('is_active', 'id', 'name', 'category',)
     list_display_links = ('name',)
     list_filter = ('name', 'category', 'provider',)
     list_editable = ('is_active',)
