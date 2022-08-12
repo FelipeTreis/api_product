@@ -4,12 +4,16 @@ from django.db import models
 class Provider(models.Model):
     name = models.CharField(max_length=155, blank=False)
     cnpj = models.CharField(max_length=18, blank=False)
+    slug = models.SlugField(unique=True)
+    is_active = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
 
 class Category(models.Model):
     category = models.CharField(max_length=155, blank=False)
+    is_active = models.BooleanField(default=False)
+    slug = models.SlugField(unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -28,8 +32,10 @@ class Product(models.Model):
         max_digits=7, decimal_places=2, default=None
     )
     input_date = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=False)
+    slug = models.SlugField(unique=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     @property
     def output_value(self):
-        return (self.input_value + (self.input_value * 0.4))
+        return self.input_value + (self.input_value * 0.4)
