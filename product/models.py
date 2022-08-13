@@ -1,3 +1,5 @@
+import decimal
+
 from django.db import models
 
 
@@ -9,6 +11,9 @@ class Provider(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Category(models.Model):
     category = models.CharField(max_length=155, blank=False)
@@ -16,6 +21,9 @@ class Category(models.Model):
     slug = models.SlugField(unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.category
 
 
 class Product(models.Model):
@@ -29,7 +37,7 @@ class Product(models.Model):
         null=True, blank=True, default=None
     )
     input_value = models.DecimalField(
-        max_digits=7, decimal_places=2, default=None
+        max_digits=9, decimal_places=5, default=None
     )
     input_date = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=False)
@@ -38,4 +46,6 @@ class Product(models.Model):
 
     @property
     def output_value(self):
-        return self.input_value + self.input_value * 0.4
+        return round(
+            decimal.Decimal(self.input_value * 2), 2
+        )
