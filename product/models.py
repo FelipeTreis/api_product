@@ -16,6 +16,9 @@ class Provider(models.Model):
 
 
 class Category(models.Model):
+    class Meta:
+        verbose_name_plural = 'Categories'
+
     category = models.CharField(max_length=155, blank=False)
     is_active = models.BooleanField(default=False)
     slug = models.SlugField(unique=True)
