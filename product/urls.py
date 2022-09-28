@@ -9,11 +9,11 @@ app_name = 'product'
 
 product_api_router = SimpleRouter()
 product_api_router.register(
-    'provider', views.ProviderApiViewSet, basename='provider')
+    'provider/', views.ProviderApiViewSet, basename='provider')
 product_api_router.register(
-    'category', views.CategoryApiViewSet, basename='category')
+    'category/', views.CategoryApiViewSet, basename='category')
 product_api_router.register(
-    'product', views.ProductApiViewSet, basename='product')
+    'product/', views.ProductApiViewSet, basename='product')
 
 urlpatterns = [
     path(

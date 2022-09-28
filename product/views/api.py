@@ -14,18 +14,18 @@ class ProviderApiViewSet(ModelViewSet):
     queryset = Provider.objects.filter(is_active=True)
     serializer_class = ProviderSerializer
     pagination_class = Pagiantion
-    permission_classes = IsAuthenticatedOrReadOnly
+    permission_classes = [IsAuthenticatedOrReadOnly, ]
 
 
 class CategoryApiViewSet(ModelViewSet):
     queryset = Category.objects.filter(is_active=True)
     serializer_class = CategorySerializer
     pagination_class = Pagiantion
-    permission_classes = IsAuthenticatedOrReadOnly
+    permission_classes = [IsAuthenticatedOrReadOnly, ]
 
 
 class ProductApiViewSet(ModelViewSet):
     queryset = Product.objects.filter(is_active=True)
     serializer_class = ProductSerializer
     pagination_class = Pagiantion
-    permission_classes = IsAuthenticatedOrReadOnly
+    permission_classes = [IsAuthenticatedOrReadOnly, ]
